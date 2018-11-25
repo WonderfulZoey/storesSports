@@ -1,0 +1,23 @@
+<div class="navbar navbar-expand-lg navbar-light bg-primary ">
+  <a class="navbar-brand">SPROTS STORE</a>
+</div>
+<div class="row">
+  <div class="col-sm-3 p-1">
+    <button class="btn btn-block btn-outline-primary" (click)="changeCategory()">Home</button>
+    <button *ngFor="let category of getCategories()"
+    [class.active]="category==selectedCategory"
+    (click)="changeCategory(category)"
+    class="btn btn-block btn-outline-primary">{{category}}</button>
+  </div>
+  <div class="col-sm-9 p-1">
+      <div *ngFor="let item of getProducts()" class="card card-outline-primary mt-1">
+          <h4 class="card-header">{{item.name}}
+          <span class="pull-xs-right tag tag-pill tag-primary">
+            {{item.price | currency:"USD":true:"2.2-2"}}
+          </span>
+        </h4>
+        <div class="card-text p-1">{{item.description}}</div>
+      </div>
+    </div>
+      
+</div>
