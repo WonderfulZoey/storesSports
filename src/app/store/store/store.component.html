@@ -1,5 +1,6 @@
 <div class="navbar navbar-expand-lg navbar-light bg-primary ">
   <a class="navbar-brand">SPROTS STORE</a>
+  <app-cart-summary></app-cart-summary>  
 </div>
 <div class="row">
   <div class="col-sm-3 p-1">
@@ -16,7 +17,10 @@
             {{item.price | currency:"USD":true:"2.2-2"}}
           </span>
         </h4>
-        <div class="card-text p-3">{{item.description}}</div>
+        <div class="card-text p-3">
+          {{item.description}}
+          <button class="btn btn-success btn-sm float-right" (click)="addProductToCart(item)">Add To Cart</button>
+        </div>
       </div>
       <div class="form-inline float-left m-3">
         <select class="form-control" [value]="productsPerpage"

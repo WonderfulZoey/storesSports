@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from "./../../model/product.model";
 import { ProductRepository } from "./../../model/product.repository";
+import { Cart } from "../../model/cart.model";
 
 declare var module: {
   id: string;
@@ -18,7 +19,8 @@ export class StoreComponent implements OnInit {
   public productsPerpage = 4;//每页显示4个
   public selectedPage = 1;//选中第一页
  
-  constructor( private repository:ProductRepository) { }
+  constructor( private repository:ProductRepository,
+               private cart:Cart) { }
 
   ngOnInit() {
   }
@@ -55,6 +57,10 @@ export class StoreComponent implements OnInit {
   //用于计数指令
   getPageCount():number {
      return Math.ceil(this.repository.getProducts(this.selectedCategory).length / this.productsPerpage);
+  }
+
+  addProductToCart(product:Product){
+     this.cart.addLine(product);
   }
 
 }
