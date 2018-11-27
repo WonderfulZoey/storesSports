@@ -52,4 +52,9 @@ export class StoreComponent implements OnInit {
     .fill(0).map((x,i) => i+1);
   }
 
+  //用于计数指令
+  getPageCount():number {
+     return Math.ceil(this.repository.getProducts(this.selectedCategory).length / this.productsPerpage);
+  }
+
 }
