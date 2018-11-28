@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from "./../../model/product.model";
 import { ProductRepository } from "./../../model/product.repository";
 import { Cart } from "../../model/cart.model";
+import { Router } from "@angular/router";
 
 declare var module: {
   id: string;
@@ -20,7 +21,8 @@ export class StoreComponent implements OnInit {
   public selectedPage = 1;//选中第一页
  
   constructor( private repository:ProductRepository,
-               private cart:Cart) { }
+               private cart:Cart,
+               private router:Router) { }
 
   ngOnInit() {
   }
@@ -61,6 +63,7 @@ export class StoreComponent implements OnInit {
 
   addProductToCart(product:Product){
      this.cart.addLine(product);
+     this.router.navigateByUrl("/cart");
   }
 
 }
